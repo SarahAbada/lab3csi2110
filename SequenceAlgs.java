@@ -17,6 +17,13 @@ public class SequenceAlgs<E> {
 	public boolean isPalindrome (Sequence<E> S) {
 		
 		// ***** add your code here  *******************
+
+		int n = S.size();
+		for (int i = 0; i < n/2; i++) {
+			if (S.get(i) != S.get(n - 1 - i)) {
+				return false;
+			}
+		}
 		
 		return true;
  		
@@ -36,6 +43,13 @@ public class SequenceAlgs<E> {
 	public void inplaceReverse(Sequence<E> S) {
 		
 		// ***** add your code here  *******************
+
+		int n = S.size();
+		for (int i = 0; i < n/2; i++) {
+			E temp = S.get(i);
+			S.set(i, S.get(n - 1 - i));
+			S.set(n - 1 - i, temp);	
+		}
 		
 	}
 	
@@ -52,6 +66,17 @@ public class SequenceAlgs<E> {
 	public void inplaceKReverse(Sequence<E> S,int k) {
 		
 		// ***** add your code here  *******************
+		int n = S.size();
+		for (int i = 0; i < n; i += k) {
+			int left = i;
+			int right = Math.min(i + k - 1, n - 1);
+			while (left < right) {
+				E temp = S.get(left);
+				S.set(left, S.get(right));
+				S.set(right, temp);
+				left++;
+				right--;
+			}
 		    	
 	}
 	
